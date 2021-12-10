@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Chat App</title>
+    <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script defer src="script.js"></script>
+    <style>
+      html {
+        margin: 1%;
+        padding: 1%;
+        background-color: rgb(227, 203, 201);
+      }
+      body {
+        margin: 0;
+        padding-bottom: 3rem;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif;
+      }
+
+      #submit {
+        position: relative;
+        top: 30%;
+        font-size: 15px;
+        width: 140px;
+        height: 30px;
+        border-radius: 5px;
+        background-color: rgb(231, 128, 123);
+        margin-top: 1em;
+      }
+      #messages {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+      #messages > li {
+        padding: 0.5rem 1rem;
+      }
+      #messages > li:nth-child(odd) {
+        background: #d6239a;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <!-- en basic html sida till alla våra  chatt room  -->
+      <div id="room-container">
+        <!-- här loopar vi igenom de änvandas room och få en room för varje användare -->
+        <% Object.keys(rooms).forEach(room => { %>
+        <div><%= room %></div>
+        <!-- en link för att kunna gå in i roomet med herf följd av vårt rum med text Join-->
+        <a href="/<%= room %>">Join</a>
+        <% }) %>
+      </div>
+      <!--  skapar en enkel form som kommer att tillåta oss att skapa nya rum med action och method -->
+      <form action="/room" method="POST">
+        <input name="room" type="text" required />
+        <button type="submit" id="submit">New Room</button>
+      </form>
+    </div>
+  </body>
+</html>
