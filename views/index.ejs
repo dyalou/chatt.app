@@ -47,7 +47,7 @@
     <div id="wrapper">
       <!-- en basic html sida till alla våra  chatt room  -->
       <div id="room-container">
-        <!-- här loopar vi igenom de änvandas room och få en room för varje användare -->
+        <!-- här loopar vi igenom de änvandas room och få en room för varje användare med ejs-mall -->
         <% Object.keys(rooms).forEach(room => { %>
         <div><%= room %></div>
         <!-- en link för att kunna gå in i roomet med herf följd av vårt rum med text Join-->
